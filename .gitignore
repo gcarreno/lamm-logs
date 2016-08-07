@@ -12,7 +12,7 @@
 
 # Delphi/Lazarus compiler-generated binaries (safe to delete)
 *.exe
-*.dll
+/bin/*.dll
 *.bpl
 *.bpi
 *.dcp
