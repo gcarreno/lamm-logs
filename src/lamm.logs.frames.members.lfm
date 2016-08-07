@@ -29,8 +29,8 @@ object frmMembers: TfrmMembers
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 100
-    ClientHeight = 25
-    ClientWidth = 497
+    ClientHeight = 21
+    ClientWidth = 493
     DataSource = dmMain.dsMembers
     Options = []
     TabOrder = 1

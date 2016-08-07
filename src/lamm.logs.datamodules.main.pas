@@ -12,21 +12,26 @@ uses
 type
   TTableList = (tlMembers, tlLaser);
   TdmMain = class(TDataModule)
+    dsLaser: TDataSource;
     dsMembers: TDataSource;
     zconnMain: TZConnection;
     zqueryMain: TZQuery;
+    ztableLasercreated: TDateTimeField;
+    ztableLaserid: TLargeintField;
+    ztableLasermember_id: TLongintField;
+    ztableLasermodified: TDateTimeField;
+    ztableLaserusage: TTimeField;
     ztableMembers: TZTable;
+    ztableLaser: TZTable;
     ztableMemberscreated: TDateTimeField;
     ztableMembersid: TLargeintField;
     ztableMembersmodified: TDateTimeField;
     ztableMembersname: TStringField;
     ztableMembersphysical_id: TStringField;
-    ztableLaser: TZTable;
-    ztableLasercreated: TDateTimeField;
-    ztableLaserid: TLargeintField;
-    ztableLasermember_id: TLargeintField;
-    ztableLasermodified: TDateTimeField;
-    ztableLasertime: TLargeintField;
+    procedure ztableLaserBeforePost(DataSet: TDataSet);
+    procedure ztableLaserNewRecord(DataSet: TDataSet);
+    procedure ztableMembersBeforePost(DataSet: TDataSet);
+    procedure ztableMembersNewRecord(DataSet: TDataSet);
   private
     { private declarations }
     {$IFDEF WINDOWS}
@@ -55,22 +60,44 @@ const
   cGetFields = 'PRAGMA table_info(%s)';
 	cTableMembers = 'CREATE TABLE members (' +
     '  id INTEGER PRIMARY KEY AUTOINCREMENT,' +
-    '  name VARCHAR(100),' +
+    '  name VARCHAR(100) NOT NULL,' +
     '  physical_id VARCHAR(255),' +
-    '  created TEXT,' +
-    '  modified TEXT' +
+    '  created DATETIME NOT NULL,' +
+    '  modified DATETIME NOT NULL' +
     ')';
 	cTableLaser = 'CREATE TABLE laser (' +
     '  id INTEGER PRIMARY KEY AUTOINCREMENT,' +
-    '  member_id INTEGER,' +
-    '  time INTEGER,' +
-    '  created TEXT,' +
-    '  modified TEXT' +
+    '  member_id INTEGER NT NULL,' +
+    '  usage TIME NOT NULL DEFAULT 0,' +
+    '  created DATETIME NOT NULL,' +
+    '  modified DATETIME NOT NULL' +
     ')';
 
 {$R *.lfm}
 
 { TdmMain }
+
+procedure TdmMain.ztableMembersNewRecord(DataSet: TDataSet);
+begin
+  ztableMemberscreated.Value := Now;
+  ztableMembersmodified.Value := Now;
+end;
+
+procedure TdmMain.ztableMembersBeforePost(DataSet: TDataSet);
+begin
+  ztableMembersmodified.Value := Now;
+end;
+
+procedure TdmMain.ztableLaserNewRecord(DataSet: TDataSet);
+begin
+  ztableLasercreated.Value := Now;
+  ztableLasermodified.Value := Now;
+end;
+
+procedure TdmMain.ztableLaserBeforePost(DataSet: TDataSet);
+begin
+  ztableLasermodified.Value := Now;
+end;
 
 procedure TdmMain.CreateTable(aTable: TTableList);
 begin

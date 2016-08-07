@@ -20,11 +20,13 @@ object dmMain: TdmMain
   object zqueryMain: TZQuery
     Connection = zconnMain
     Params = <>
-    left = 200
+    left = 216
     top = 48
   end
   object ztableMembers: TZTable
     Connection = zconnMain
+    BeforePost = ztableMembersBeforePost
+    OnNewRecord = ztableMembersNewRecord
     TableName = 'members'
     left = 106
     top = 104
@@ -39,14 +41,14 @@ object dmMain: TdmMain
       Required = False
     end
     object ztableMembersname: TStringField
-      DisplayLabel = 'Member Name'
+      DisplayLabel = 'Name'
       FieldKind = fkData
       FieldName = 'name'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = False
+      Required = True
       Size = 400
     end
     object ztableMembersphysical_id: TStringField
@@ -68,7 +70,7 @@ object dmMain: TdmMain
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = False
+      Required = True
     end
     object ztableMembersmodified: TDateTimeField
       DisplayLabel = 'Modified'
@@ -78,15 +80,18 @@ object dmMain: TdmMain
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = False
+      Required = True
     end
   end
   object ztableLaser: TZTable
     Connection = zconnMain
+    BeforePost = ztableLaserBeforePost
+    OnNewRecord = ztableLaserNewRecord
     TableName = 'laser'
     left = 106
     top = 152
     object ztableLaserid: TLargeintField
+      DisplayLabel = 'ID'
       FieldKind = fkData
       FieldName = 'id'
       Index = 0
@@ -95,7 +100,8 @@ object dmMain: TdmMain
       ReadOnly = False
       Required = False
     end
-    object ztableLasermember_id: TLargeintField
+    object ztableLasermember_id: TLongintField
+      DisplayLabel = 'Member ID'
       FieldKind = fkData
       FieldName = 'member_id'
       Index = 1
@@ -104,37 +110,45 @@ object dmMain: TdmMain
       ReadOnly = False
       Required = False
     end
-    object ztableLasertime: TLargeintField
+    object ztableLaserusage: TTimeField
+      DisplayLabel = 'Usage'
       FieldKind = fkData
-      FieldName = 'time'
+      FieldName = 'usage'
       Index = 2
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = False
+      Required = True
     end
     object ztableLasercreated: TDateTimeField
+      DisplayLabel = 'Created'
       FieldKind = fkData
       FieldName = 'created'
       Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = False
+      Required = True
     end
     object ztableLasermodified: TDateTimeField
+      DisplayLabel = 'Modified'
       FieldKind = fkData
       FieldName = 'modified'
       Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = False
+      Required = True
     end
   end
   object dsMembers: TDataSource
     DataSet = ztableMembers
-    left = 200
+    left = 216
     top = 104
+  end
+  object dsLaser: TDataSource
+    DataSet = ztableLaser
+    left = 216
+    top = 152
   end
 end

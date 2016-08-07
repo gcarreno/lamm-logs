@@ -5,13 +5,16 @@ unit LAMM.Logs.Frames.Laser;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, ExtCtrls;
+  Classes, SysUtils, FileUtil, Forms, Controls, ExtCtrls, DbCtrls, RxDBGrid,
+  LAMM.Logs.DataModules.Main;
 
 { TfrmLaser }
 
 type
   TfrmLaser = class(TFrame)
+    DBNavigator1: TDBNavigator;
     panTitle: TPanel;
+    RxDBGrid1: TRxDBGrid;
   private
     { private declarations }
   public
