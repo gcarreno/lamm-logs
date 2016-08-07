@@ -1,0 +1,19 @@
+object frmMembers: TfrmMembers
+  Left = 0
+  Height = 310
+  Top = 0
+  Width = 497
+  Align = alClient
+  ClientHeight = 310
+  ClientWidth = 497
+  TabOrder = 0
+  object panTitle: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 497
+    Align = alTop
+    Caption = 'Members'
+    TabOrder = 0
+  end
+end

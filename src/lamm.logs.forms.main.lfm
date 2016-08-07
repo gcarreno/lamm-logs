@@ -1,0 +1,95 @@
+object frmMain: TfrmMain
+  Left = 0
+  Height = 435
+  Top = 0
+  Width = 655
+  Caption = 'LAMM Logs'
+  ClientHeight = 435
+  ClientWidth = 655
+  Menu = mmnuMain
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  SessionProperties = 'Top;Left;Height;Width;WindowState'
+  Visible = False
+  object sbMain: TStatusBar
+    Left = 0
+    Height = 21
+    Top = 414
+    Width = 655
+    Panels = <>
+  end
+  object tbarMain: TToolBar
+    Left = 0
+    Height = 26
+    Top = 0
+    Width = 655
+    Caption = 'tbarMain'
+    TabOrder = 1
+    object tbtnLaser: TToolButton
+      Left = 24
+      Top = 2
+      Action = actSectionsLaser
+    end
+    object tbtnFileExit: TToolButton
+      Left = 55
+      Top = 2
+      Action = actFileExit
+    end
+    object tbtnSectionsMembers: TToolButton
+      Left = 1
+      Top = 2
+      Action = actSectionsMembers
+    end
+    object tbtnSeparator1: TToolButton
+      Left = 47
+      Height = 22
+      Top = 2
+      Width = 8
+      Caption = 'tbtnSeparator1'
+      Style = tbsSeparator
+    end
+  end
+  object panMain: TPanel
+    Left = 0
+    Height = 388
+    Top = 26
+    Width = 655
+    Align = alClient
+    TabOrder = 2
+  end
+  object mmnuMain: TMainMenu
+    left = 136
+    top = 24
+    object mnuFile: TMenuItem
+      Caption = '&File'
+      object mnuFileExit: TMenuItem
+        Action = actFileExit
+      end
+    end
+  end
+  object actlMain: TActionList
+    left = 40
+    top = 24
+    object actFileExit: TFileExit
+      Category = 'File'
+      Caption = 'E&xit'
+      Hint = 'Exit'
+    end
+    object actSectionsMembers: TAction
+      Category = 'Sections'
+      Caption = 'Members'
+      OnExecute = actSectionsMembersExecute
+    end
+    object actSectionsLaser: TAction
+      Category = 'Sections'
+      Caption = 'Laser'
+      OnExecute = actSectionsLaserExecute
+    end
+  end
+  object iniAppStorage: TIniPropStorage
+    StoredValues = <>
+    left = 40
+    top = 112
+  end
+end

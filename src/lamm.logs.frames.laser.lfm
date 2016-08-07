@@ -1,0 +1,19 @@
+object frmLaser: TfrmLaser
+  Left = 0
+  Height = 395
+  Top = 0
+  Width = 630
+  Align = alTop
+  ClientHeight = 395
+  ClientWidth = 630
+  TabOrder = 0
+  object panTitle: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 630
+    Align = alTop
+    Caption = 'Laser'
+    TabOrder = 0
+  end
+end
