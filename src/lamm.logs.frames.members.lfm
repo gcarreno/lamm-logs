@@ -16,4 +16,163 @@ object frmMembers: TfrmMembers
     Caption = 'Members'
     TabOrder = 0
   end
+  object DBNavigator1: TDBNavigator
+    Left = 0
+    Height = 25
+    Top = 50
+    Width = 497
+    Align = alTop
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 497
+    DataSource = dmMain.dsMembers
+    Options = []
+    TabOrder = 1
+  end
+  object RxDBGrid1: TRxDBGrid
+    Left = 0
+    Height = 235
+    Top = 75
+    Width = 497
+    ColumnDefValues.BlobText = '(blob)'
+    TitleButtons = False
+    AutoSort = True
+    Columns = <    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'ID'
+        FieldName = 'id'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Member Name'
+        Width = 200
+        FieldName = 'name'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Physical ID'
+        Width = 200
+        FieldName = 'physical_id'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Created'
+        FieldName = 'created'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Modified'
+        FieldName = 'modified'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end>
+    KeyStrokes = <    
+      item
+        Command = rxgcShowFindDlg
+        ShortCut = 16454
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowColumnsDlg
+        ShortCut = 16471
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowFilterDlg
+        ShortCut = 16468
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowSortDlg
+        ShortCut = 16467
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowQuickFilter
+        ShortCut = 16465
+        Enabled = True
+      end    
+      item
+        Command = rxgcHideQuickFilter
+        ShortCut = 16456
+        Enabled = True
+      end    
+      item
+        Command = rxgcSelectAll
+        ShortCut = 16449
+        Enabled = True
+      end    
+      item
+        Command = rxgcDeSelectAll
+        ShortCut = 16429
+        Enabled = True
+      end    
+      item
+        Command = rxgcInvertSelection
+        ShortCut = 16426
+        Enabled = True
+      end    
+      item
+        Command = rxgcOptimizeColumnsWidth
+        ShortCut = 16427
+        Enabled = True
+      end    
+      item
+        Command = rxgcCopyCellValue
+        ShortCut = 16451
+        Enabled = True
+      end>
+    FooterOptions.DrawFullLine = False
+    OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+    Align = alClient
+    Color = clWindow
+    DrawFullLine = False
+    FocusColor = clRed
+    SelectedColor = clHighlight
+    GridLineStyle = psSolid
+    DataSource = dmMain.dsMembers
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ParentColor = False
+    TabOrder = 2
+  end
 end

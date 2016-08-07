@@ -56,11 +56,21 @@ object frmMain: TfrmMain
     Top = 26
     Width = 655
     Align = alClient
+    ClientHeight = 388
+    ClientWidth = 655
     TabOrder = 2
+    object Label1: TLabel
+      Left = 10
+      Height = 17
+      Top = 11
+      Width = 45
+      Caption = 'Label1'
+      ParentColor = False
+    end
   end
   object mmnuMain: TMainMenu
-    left = 136
-    top = 24
+    left = 144
+    top = 64
     object mnuFile: TMenuItem
       Caption = '&File'
       object mnuFileExit: TMenuItem
@@ -78,8 +88,8 @@ object frmMain: TfrmMain
     end
   end
   object actlMain: TActionList
-    left = 40
-    top = 24
+    left = 48
+    top = 64
     object actFileExit: TFileExit
       Category = 'File'
       Caption = 'E&xit'
@@ -88,17 +98,19 @@ object frmMain: TfrmMain
     object actSectionsMembers: TAction
       Category = 'Sections'
       Caption = 'Members'
+      DisableIfNoHandler = False
       OnExecute = actSectionsMembersExecute
     end
     object actSectionsLaser: TAction
       Category = 'Sections'
       Caption = 'Laser'
+      DisableIfNoHandler = False
       OnExecute = actSectionsLaserExecute
     end
   end
   object iniAppStorage: TIniPropStorage
     StoredValues = <>
-    left = 40
-    top = 112
+    left = 48
+    top = 152
   end
 end

@@ -18,6 +18,7 @@ type
     actlMain: TActionList;
     actFileExit: TFileExit;
     iniAppStorage: TIniPropStorage;
+    Label1: TLabel;
     mnuSectionsLaser: TMenuItem;
     menuSectionsMembers: TMenuItem;
     mnuSections: TMenuItem;
@@ -45,7 +46,7 @@ type
     FFrameLaser: TfrmLaser;
 
     procedure InitShortCuts;
-    procedure InitStorage;
+    procedure InitAppStorage;
     procedure InitFrames;
     procedure SwitchFrame(const aFrame: TFrame);
   public
@@ -57,6 +58,9 @@ var
 
 implementation
 
+uses
+  LAMM.Logs.DataModules.Main;
+
 {$R *.lfm}
 
 { TfrmMain }
@@ -64,13 +68,17 @@ implementation
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   InitShortCuts;
-  InitStorage;
+  InitAppStorage;
   InitFrames;
+  dmMain.DataBaseFileName := ExtractFileNameWithoutExt(FStorageFileName) +
+    '.db';
+  dmMain.CheckDataBaseFile;
 end;
 
-procedure TfrmMain.InitStorage;
+procedure TfrmMain.InitAppStorage;
 begin
-  FStorageFileName := ExtractFileDir(ParamStr(0)) + DirectorySeparator +
+  FStorageFileName := ExtractFileDir(Application.ExeName) +
+  	DirectorySeparator +
     'LAMMLogs.ini';
   iniAppStorage.IniFileName := FStorageFileName;
 end;

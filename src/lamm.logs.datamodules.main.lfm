@@ -1,7 +1,140 @@
 object dmMain: TdmMain
   OldCreateOrder = False
-  Height = 298
+  Height = 386
   HorizontalOffset = 295
   VerticalOffset = 67
-  Width = 488
+  Width = 620
+  object zconnMain: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = False
+    ClientCodepage = 'UTF-8'
+    Properties.Strings = (
+      'codepage=UTF-8'
+    )
+    Port = 0
+    Database = '/home/gcarreno/Programming/lamm-logs/bin/LAMMLogs.db'
+    Protocol = 'sqlite-3'
+    left = 106
+    top = 51
+  end
+  object zqueryMain: TZQuery
+    Connection = zconnMain
+    Params = <>
+    left = 200
+    top = 48
+  end
+  object ztableMembers: TZTable
+    Connection = zconnMain
+    TableName = 'members'
+    left = 106
+    top = 104
+    object ztableMembersid: TLargeintField
+      DisplayLabel = 'ID'
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ztableMembersname: TStringField
+      DisplayLabel = 'Member Name'
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 400
+    end
+    object ztableMembersphysical_id: TStringField
+      DisplayLabel = 'Physical ID'
+      FieldKind = fkData
+      FieldName = 'physical_id'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+    object ztableMemberscreated: TDateTimeField
+      DisplayLabel = 'Created'
+      FieldKind = fkData
+      FieldName = 'created'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ztableMembersmodified: TDateTimeField
+      DisplayLabel = 'Modified'
+      FieldKind = fkData
+      FieldName = 'modified'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object ztableLaser: TZTable
+    Connection = zconnMain
+    TableName = 'laser'
+    left = 106
+    top = 152
+    object ztableLaserid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ztableLasermember_id: TLargeintField
+      FieldKind = fkData
+      FieldName = 'member_id'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ztableLasertime: TLargeintField
+      FieldKind = fkData
+      FieldName = 'time'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ztableLasercreated: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'created'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ztableLasermodified: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'modified'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dsMembers: TDataSource
+    DataSet = ztableMembers
+    left = 200
+    top = 104
+  end
 end

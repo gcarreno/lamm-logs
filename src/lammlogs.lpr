@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, LAMM.Logs.Forms.Main, LAMM.Logs.Frames.Members, LAMM.Logs.Frames.Laser,
-  LAMM.Logs.DataModules.Main
+  LAMM.Logs.DataModules.Main, zcomponent, rxnew
   { you can add units after this };
 
 {$R *.res}
