@@ -32,7 +32,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="4">
+    <Units Count="5">
       <Unit0>
         <Filename Value="lammlogs.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -62,6 +62,13 @@
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="LAMM.Logs.Frames.Laser"/>
       </Unit3>
+      <Unit4>
+        <Filename Value="lamm.logs.datamodules.main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dmMain"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="LAMM.Logs.DataModules.Main"/>
+      </Unit4>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -67,6 +67,15 @@ object frmMain: TfrmMain
         Action = actFileExit
       end
     end
+    object mnuSections: TMenuItem
+      Caption = '&Sections'
+      object menuSectionsMembers: TMenuItem
+        Action = actSectionsMembers
+      end
+      object mnuSectionsLaser: TMenuItem
+        Action = actSectionsLaser
+      end
+    end
   end
   object actlMain: TActionList
     left = 40

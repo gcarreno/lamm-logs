@@ -18,6 +18,9 @@ type
     actlMain: TActionList;
     actFileExit: TFileExit;
     iniAppStorage: TIniPropStorage;
+    mnuSectionsLaser: TMenuItem;
+    menuSectionsMembers: TMenuItem;
+    mnuSections: TMenuItem;
     mnuFileExit: TMenuItem;
     mnuFile: TMenuItem;
     mmnuMain: TMainMenu;
