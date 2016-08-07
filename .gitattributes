@@ -24,3 +24,4 @@
 *.exe binary
 *.res binary
 *.ico binary
+*.dll binary
