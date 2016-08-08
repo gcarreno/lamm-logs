@@ -11,6 +11,7 @@ object dmMain: TdmMain
     Properties.Strings = (
       'codepage=UTF-8'
     )
+    Connected = True
     Port = 0
     Database = '/home/gcarreno/Programming/lamm-logs/bin/LAMMLogs.db'
     Protocol = 'sqlite-3'
@@ -27,6 +28,7 @@ object dmMain: TdmMain
     Connection = zconnMain
     BeforePost = ztableMembersBeforePost
     OnNewRecord = ztableMembersNewRecord
+    Active = True
     TableName = 'members'
     left = 106
     top = 104
@@ -87,7 +89,10 @@ object dmMain: TdmMain
     Connection = zconnMain
     BeforePost = ztableLaserBeforePost
     OnNewRecord = ztableLaserNewRecord
+    Active = True
     TableName = 'laser'
+    MasterFields = 'id'
+    LinkedFields = 'member_id'
     left = 106
     top = 152
     object ztableLaserid: TLargeintField
@@ -110,11 +115,26 @@ object dmMain: TdmMain
       ReadOnly = False
       Required = False
     end
+    object ztableLasername: TStringField
+      DisplayLabel = 'Name'
+      FieldKind = fkLookup
+      FieldName = 'name'
+      Index = 2
+      KeyFields = 'member_id'
+      LookupCache = False
+      LookupDataSet = ztableMembers
+      LookupKeyFields = 'id'
+      LookupResultField = 'name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 400
+    end
     object ztableLaserusage: TTimeField
       DisplayLabel = 'Usage'
       FieldKind = fkData
       FieldName = 'usage'
-      Index = 2
+      Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -124,7 +144,7 @@ object dmMain: TdmMain
       DisplayLabel = 'Created'
       FieldKind = fkData
       FieldName = 'created'
-      Index = 3
+      Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -134,7 +154,7 @@ object dmMain: TdmMain
       DisplayLabel = 'Modified'
       FieldKind = fkData
       FieldName = 'modified'
-      Index = 4
+      Index = 5
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False

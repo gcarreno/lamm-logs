@@ -5,16 +5,28 @@ unit LAMM.Logs.Frames.Laser;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, ExtCtrls, DbCtrls, RxDBGrid,
-  LAMM.Logs.DataModules.Main;
+  Classes, SysUtils, FileUtil, Forms, Controls, ExtCtrls, DbCtrls, PairSplitter,
+  ComCtrls, Dialogs, ActnList, StdCtrls, RxDBGrid, LAMM.Logs.DataModules.Main;
 
 { TfrmLaser }
 
 type
   TfrmLaser = class(TFrame)
-    DBNavigator1: TDBNavigator;
+    actSectionsLaserDelete: TAction;
+    actSectionsLaserAdd: TAction;
+    actlLaser: TActionList;
+    lbMembers: TListBox;
+    psLaser: TPairSplitter;
+    pssMembers: TPairSplitterSide;
+    pssLaser: TPairSplitterSide;
     panTitle: TPanel;
-    RxDBGrid1: TRxDBGrid;
+    rxdbgridLaser: TRxDBGrid;
+    tbarLaser: TToolBar;
+    tbtnAdd: TToolButton;
+    tbtnDelete: TToolButton;
+    procedure actSectionsLaserDeleteExecute(Sender: TObject);
+    procedure actSectionsLaserAddExecute(Sender: TObject);
+    procedure lbMembersSelectionChange(Sender: TObject; User: boolean);
   private
     { private declarations }
   public
@@ -24,6 +36,28 @@ type
 implementation
 
 {$R *.lfm}
+
+{ TfrmLaser }
+
+procedure TfrmLaser.actSectionsLaserAddExecute(Sender: TObject);
+var
+  sUsage: String;
+begin
+  if InputQuery('Usage', 'Add usage', sUsage) then
+  begin
+
+  end;
+end;
+
+procedure TfrmLaser.lbMembersSelectionChange(Sender: TObject; User: boolean);
+begin
+  //
+end;
+
+procedure TfrmLaser.actSectionsLaserDeleteExecute(Sender: TObject);
+begin
+  //
+end;
 
 end.
 

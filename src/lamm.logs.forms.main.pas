@@ -18,7 +18,6 @@ type
     actlMain: TActionList;
     actFileExit: TFileExit;
     iniAppStorage: TIniPropStorage;
-    Label1: TLabel;
     mnuSectionsLaser: TMenuItem;
     menuSectionsMembers: TMenuItem;
     mnuSections: TMenuItem;
@@ -45,10 +44,12 @@ type
     FFrameMembers: TfrmMembers;
     FFrameLaser: TfrmLaser;
 
+    procedure FillMembersListBox;
     procedure InitShortCuts;
     procedure InitAppStorage;
     procedure InitFrames;
     procedure SwitchFrame(const aFrame: TFrame);
+    procedure DisplayHint(Sender: TObject);
   public
     { public declarations }
   end;
@@ -67,12 +68,14 @@ uses
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
+  Application.OnHint := @DisplayHint;
   InitShortCuts;
   InitAppStorage;
   InitFrames;
   dmMain.DataBaseFileName := ExtractFileNameWithoutExt(FStorageFileName) +
     '.db';
   dmMain.CheckDataBaseFile;
+  FillMembersListBox;
 end;
 
 procedure TfrmMain.InitAppStorage;
@@ -91,6 +94,26 @@ begin
 {$IFDEF WINDOWS}
   actFileExit.ShortCut := KeyToShortCut(VK_X, [ssAlt]);
 {$ENDIF}
+end;
+
+procedure TfrmMain.FillMembersListBox;
+var
+  iIndex: Integer;
+begin
+  //FFrameLaser.lbMembers.Items.Add('All');
+  dmMain.ztableMembers.First;
+  repeat
+    iIndex := FFrameLaser.lbMembers.Items.Add(
+    	dmMain.ztableMembersname.AsString);
+//    FFrameLaser.lbMembers.Items.ValueFromIndex[iIndex] :=
+//    	dmMain.ztableMembersid.AsString;
+    dmMain.ztableMembers.Next;
+  until dmMain.ztableMembers.EOF;
+  dmMain.ztableMembers.First;
+  if FFrameLaser.lbMembers.Items.Count > 0 then
+  begin
+    FFrameLaser.lbMembers.ItemIndex := 0;
+  end;
 end;
 
 procedure TfrmMain.InitFrames;
@@ -114,6 +137,11 @@ begin
   FFrameLast := aFrame;
   FFrameLast.Visible := True;
   FFrameLast.BringToFront;
+end;
+
+procedure TfrmMain.DisplayHint(Sender: TObject);
+begin
+  sbMain.SimpleText := GetLongHint(Application.Hint);
 end;
 
 procedure TfrmMain.FormCloseQuery(Sender: TObject; var CanClose: boolean);

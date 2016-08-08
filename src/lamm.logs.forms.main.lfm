@@ -30,16 +30,22 @@ object frmMain: TfrmMain
       Left = 24
       Top = 2
       Action = actSectionsLaser
+      ParentShowHint = False
+      ShowHint = True
     end
     object tbtnFileExit: TToolButton
       Left = 55
       Top = 2
       Action = actFileExit
+      ParentShowHint = False
+      ShowHint = True
     end
     object tbtnSectionsMembers: TToolButton
       Left = 1
       Top = 2
       Action = actSectionsMembers
+      ParentShowHint = False
+      ShowHint = True
     end
     object tbtnSeparator1: TToolButton
       Left = 47
@@ -56,29 +62,21 @@ object frmMain: TfrmMain
     Top = 26
     Width = 655
     Align = alClient
-    ClientHeight = 388
-    ClientWidth = 655
     TabOrder = 2
-    object Label1: TLabel
-      Left = 10
-      Height = 17
-      Top = 11
-      Width = 45
-      Caption = 'Label1'
-      ParentColor = False
-    end
   end
   object mmnuMain: TMainMenu
     left = 144
     top = 64
     object mnuFile: TMenuItem
       Caption = '&File'
+      Hint = 'File|File Menu'
       object mnuFileExit: TMenuItem
         Action = actFileExit
       end
     end
     object mnuSections: TMenuItem
       Caption = '&Sections'
+      Hint = 'Sections|Sections Menu'
       object menuSectionsMembers: TMenuItem
         Action = actSectionsMembers
       end
@@ -93,18 +91,20 @@ object frmMain: TfrmMain
     object actFileExit: TFileExit
       Category = 'File'
       Caption = 'E&xit'
-      Hint = 'Exit'
+      Hint = 'Exit|Exit the Application'
     end
     object actSectionsMembers: TAction
       Category = 'Sections'
       Caption = 'Members'
       DisableIfNoHandler = False
+      Hint = 'Members|Display the Members section'
       OnExecute = actSectionsMembersExecute
     end
     object actSectionsLaser: TAction
       Category = 'Sections'
       Caption = 'Laser'
       DisableIfNoHandler = False
+      Hint = 'Laser|Display the Laser section'
       OnExecute = actSectionsLaserExecute
     end
   end

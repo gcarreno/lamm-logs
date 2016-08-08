@@ -10,10 +10,11 @@ uses
 { TdmMain }
 
 type
-  TTableList = (tlMembers, tlLaser);
+  TTableList = (tlNone, tlMembers, tlLaser);
   TdmMain = class(TDataModule)
     dsLaser: TDataSource;
     dsMembers: TDataSource;
+    ztableLasername: TStringField;
     zconnMain: TZConnection;
     zqueryMain: TZQuery;
     ztableLasercreated: TDateTimeField;
@@ -39,6 +40,7 @@ type
     {$ENDIF}
     FDataBaseFileName: String;
 
+    function TableType(const aTable: String): TTableList;
     procedure CreateTable(aTable: TTableList);
   public
     { public declarations }
@@ -57,21 +59,31 @@ const
     'WHERE type=''table'' AND ' +
     'name NOT LIKE ''sqlite%''' +
     ';';
-  cGetFields = 'PRAGMA table_info(%s)';
-	cTableMembers = 'CREATE TABLE members (' +
+  cGetTable = 'SELECT name FROM sqlite_master ' +
+    'WHERE type=''table'' AND ' +
+    'name = ''%s''' +
+    ';';
+  //cGetFields = 'PRAGMA table_info(%s)';
+  cTableMembers = 'members';
+	cTableMembersSQL = 'CREATE TABLE members (' +
     '  id INTEGER PRIMARY KEY AUTOINCREMENT,' +
     '  name VARCHAR(100) NOT NULL,' +
     '  physical_id VARCHAR(255),' +
     '  created DATETIME NOT NULL,' +
     '  modified DATETIME NOT NULL' +
     ')';
-	cTableLaser = 'CREATE TABLE laser (' +
+  cTableLaser = 'laser';
+	cTableLaserSQL = 'CREATE TABLE laser (' +
     '  id INTEGER PRIMARY KEY AUTOINCREMENT,' +
     '  member_id INTEGER NT NULL,' +
     '  usage TIME NOT NULL DEFAULT 0,' +
     '  created DATETIME NOT NULL,' +
     '  modified DATETIME NOT NULL' +
     ')';
+  cTableList : array [0..1] of String = (
+  	cTableMembers,
+    cTableLaser
+    );
 
 {$R *.lfm}
 
@@ -81,6 +93,13 @@ procedure TdmMain.ztableMembersNewRecord(DataSet: TDataSet);
 begin
   ztableMemberscreated.Value := Now;
   ztableMembersmodified.Value := Now;
+end;
+
+function TdmMain.TableType(const aTable: String): TTableList;
+begin
+  Result := tlNone;
+  if cTableMembers = aTable then Result := tlMembers;
+  if cTableLaser = aTable then Result := tlLaser;
 end;
 
 procedure TdmMain.ztableMembersBeforePost(DataSet: TDataSet);
@@ -104,16 +123,18 @@ begin
   zqueryMain.SQL.Clear;
   case aTable of
   	tlMembers:begin
-      zqueryMain.SQL.Text := cTableMembers;
+      zqueryMain.SQL.Text := cTableMembersSQL;
     end;
     tlLaser:begin
-      zqueryMain.SQL.Text := cTableLaser;
+      zqueryMain.SQL.Text := cTableLaserSQL;
     end;
   end;
   zqueryMain.ExecSQL;
 end;
 
 procedure TdmMain.CheckDataBaseFile;
+var
+  sTable: String;
 begin
   {$IFDEF WINDOWS}
   FSQLiteLibrary := '..' +
@@ -141,6 +162,7 @@ begin
         if zqueryMain.RecordCount = 0 then
         begin
           try
+            zqueryMain.Active := False;
             CreateTable(tlMembers);
             CreateTable(tlLaser);
           except
@@ -152,8 +174,18 @@ begin
         end
         else
         begin
-          // Sort out which tables need to be created
-          //ShowMessage('Number of Tables: ' + IntToStr(zqueryMain.RecordCount));
+          zqueryMain.Active := False;
+          for sTable in cTableList do
+          begin
+            zqueryMain.SQL.Clear;
+            zqueryMain.SQL.Add(Format(cGetTable, [sTable]));
+            zqueryMain.Active := True;
+            if zqueryMain.RecordCount = 0 then
+            begin
+              CreateTable(TableType(sTable));
+            end;
+            zqueryMain.Active := False;
+          end;
         end;
       except
         on E:Exception do

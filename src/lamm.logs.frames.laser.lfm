@@ -3,7 +3,7 @@ object frmLaser: TfrmLaser
   Height = 395
   Top = 0
   Width = 630
-  Align = alTop
+  Align = alClient
   ClientHeight = 395
   ClientWidth = 630
   TabOrder = 0
@@ -16,161 +16,207 @@ object frmLaser: TfrmLaser
     Caption = 'Laser'
     TabOrder = 0
   end
-  object DBNavigator1: TDBNavigator
+  object psLaser: TPairSplitter
     Left = 0
-    Height = 25
+    Height = 345
     Top = 50
     Width = 630
-    Align = alTop
-    BevelOuter = bvNone
-    ChildSizing.EnlargeHorizontal = crsScaleChilds
-    ChildSizing.EnlargeVertical = crsScaleChilds
-    ChildSizing.ShrinkHorizontal = crsScaleChilds
-    ChildSizing.ShrinkVertical = crsScaleChilds
-    ChildSizing.Layout = cclLeftToRightThenTopToBottom
-    ChildSizing.ControlsPerLine = 100
-    ClientHeight = 25
-    ClientWidth = 630
-    DataSource = dmMain.dsLaser
-    Options = []
-    TabOrder = 1
-  end
-  object RxDBGrid1: TRxDBGrid
-    Left = 0
-    Height = 320
-    Top = 75
-    Width = 630
-    ColumnDefValues.BlobText = '(blob)'
-    TitleButtons = False
-    AutoSort = True
-    Columns = <    
-      item
-        Title.Alignment = taCenter
-        Title.Orientation = toHorizontal
-        Title.Caption = 'ID'
-        FieldName = 'id'
-        EditButtons = <>
-        Filter.DropDownRows = 0
-        Filter.EmptyValue = '(Empty)'
-        Filter.EmptyFont.Style = [fsItalic]
-        Filter.ItemIndex = -1
-        Footers = <>
-      end    
-      item
-        Title.Alignment = taCenter
-        Title.Orientation = toHorizontal
-        Title.Caption = 'Member ID'
-        FieldName = 'member_id'
-        EditButtons = <>
-        Filter.DropDownRows = 0
-        Filter.EmptyValue = '(Empty)'
-        Filter.EmptyFont.Style = [fsItalic]
-        Filter.ItemIndex = -1
-        Footers = <>
-      end    
-      item
-        Title.Alignment = taCenter
-        Title.Orientation = toHorizontal
-        Title.Caption = 'Usage'
-        FieldName = 'usage'
-        EditButtons = <>
-        Filter.DropDownRows = 0
-        Filter.EmptyValue = '(Empty)'
-        Filter.EmptyFont.Style = [fsItalic]
-        Filter.ItemIndex = -1
-        Footers = <>
-      end    
-      item
-        Title.Alignment = taCenter
-        Title.Orientation = toHorizontal
-        Title.Caption = 'Created'
-        FieldName = 'created'
-        EditButtons = <>
-        Filter.DropDownRows = 0
-        Filter.EmptyValue = '(Empty)'
-        Filter.EmptyFont.Style = [fsItalic]
-        Filter.ItemIndex = -1
-        Footers = <>
-      end    
-      item
-        Title.Alignment = taCenter
-        Title.Orientation = toHorizontal
-        Title.Caption = 'Modified'
-        FieldName = 'modified'
-        EditButtons = <>
-        Filter.DropDownRows = 0
-        Filter.EmptyValue = '(Empty)'
-        Filter.EmptyFont.Style = [fsItalic]
-        Filter.ItemIndex = -1
-        Footers = <>
-      end>
-    KeyStrokes = <    
-      item
-        Command = rxgcShowFindDlg
-        ShortCut = 16454
-        Enabled = True
-      end    
-      item
-        Command = rxgcShowColumnsDlg
-        ShortCut = 16471
-        Enabled = True
-      end    
-      item
-        Command = rxgcShowFilterDlg
-        ShortCut = 16468
-        Enabled = True
-      end    
-      item
-        Command = rxgcShowSortDlg
-        ShortCut = 16467
-        Enabled = True
-      end    
-      item
-        Command = rxgcShowQuickFilter
-        ShortCut = 16465
-        Enabled = True
-      end    
-      item
-        Command = rxgcHideQuickFilter
-        ShortCut = 16456
-        Enabled = True
-      end    
-      item
-        Command = rxgcSelectAll
-        ShortCut = 16449
-        Enabled = True
-      end    
-      item
-        Command = rxgcDeSelectAll
-        ShortCut = 16429
-        Enabled = True
-      end    
-      item
-        Command = rxgcInvertSelection
-        ShortCut = 16426
-        Enabled = True
-      end    
-      item
-        Command = rxgcOptimizeColumnsWidth
-        ShortCut = 16427
-        Enabled = True
-      end    
-      item
-        Command = rxgcCopyCellValue
-        ShortCut = 16451
-        Enabled = True
-      end>
-    FooterOptions.DrawFullLine = False
-    OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
     Align = alClient
-    Color = clWindow
-    DrawFullLine = False
-    FocusColor = clRed
-    SelectedColor = clHighlight
-    GridLineStyle = psSolid
-    DataSource = dmMain.dsLaser
-    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    ParentColor = False
-    TabOrder = 2
+    Position = 150
+    object pssMembers: TPairSplitterSide
+      Cursor = crArrow
+      Left = 0
+      Height = 345
+      Top = 0
+      Width = 150
+      ClientWidth = 150
+      ClientHeight = 345
+      object lbMembers: TListBox
+        Left = 0
+        Height = 345
+        Top = 0
+        Width = 150
+        Align = alClient
+        ItemHeight = 0
+        OnSelectionChange = lbMembersSelectionChange
+        ScrollWidth = 148
+        TabOrder = 0
+        TopIndex = -1
+      end
+    end
+    object pssLaser: TPairSplitterSide
+      Cursor = crArrow
+      Left = 155
+      Height = 345
+      Top = 0
+      Width = 475
+      ClientWidth = 475
+      ClientHeight = 345
+      object rxdbgridLaser: TRxDBGrid
+        Left = 0
+        Height = 319
+        Top = 0
+        Width = 475
+        ColumnDefValues.BlobText = '(blob)'
+        TitleButtons = False
+        AutoSort = True
+        Columns = <        
+          item
+            PickList.Strings = (
+              'Gustavo Carreno'
+              'Ian Norton'
+              'Kay Kempers'
+              'Claire J'
+            )
+            Title.Alignment = taCenter
+            Title.Orientation = toHorizontal
+            Title.Hint = 'Name|Member Name'
+            Title.ShowHint = True
+            Title.Caption = 'Name'
+            Width = 200
+            FieldName = 'name'
+            EditButtons = <>
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            Footers = <>
+          end        
+          item
+            Title.Alignment = taCenter
+            Title.Orientation = toHorizontal
+            Title.Hint = 'Usage|Amount of Laser time'
+            Title.Caption = 'Usage'
+            Width = 100
+            FieldName = 'usage'
+            EditButtons = <>
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            Footers = <>
+          end        
+          item
+            Title.Alignment = taCenter
+            Title.Orientation = toHorizontal
+            Title.Hint = 'When|Date of usage'
+            Title.Caption = 'When'
+            Width = 100
+            FieldName = 'created'
+            EditButtons = <>
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            Footers = <>
+          end>
+        KeyStrokes = <        
+          item
+            Command = rxgcShowFindDlg
+            ShortCut = 16454
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowColumnsDlg
+            ShortCut = 16471
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowFilterDlg
+            ShortCut = 16468
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowSortDlg
+            ShortCut = 16467
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowQuickFilter
+            ShortCut = 16465
+            Enabled = True
+          end        
+          item
+            Command = rxgcHideQuickFilter
+            ShortCut = 16456
+            Enabled = True
+          end        
+          item
+            Command = rxgcSelectAll
+            ShortCut = 16449
+            Enabled = True
+          end        
+          item
+            Command = rxgcDeSelectAll
+            ShortCut = 16429
+            Enabled = True
+          end        
+          item
+            Command = rxgcInvertSelection
+            ShortCut = 16426
+            Enabled = True
+          end        
+          item
+            Command = rxgcOptimizeColumnsWidth
+            ShortCut = 16427
+            Enabled = True
+          end        
+          item
+            Command = rxgcCopyCellValue
+            ShortCut = 16451
+            Enabled = True
+          end>
+        FooterOptions.DrawFullLine = False
+        OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+        Align = alClient
+        Color = clWindow
+        DrawFullLine = False
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        DataSource = dmMain.dsLaser
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object tbarLaser: TToolBar
+        Left = 0
+        Height = 26
+        Top = 319
+        Width = 475
+        Align = alBottom
+        Caption = 'tbarLaser'
+        TabOrder = 1
+        object tbtnAdd: TToolButton
+          Left = 1
+          Top = 2
+          Action = actSectionsLaserAdd
+        end
+        object tbtnDelete: TToolButton
+          Left = 24
+          Top = 2
+          Action = actSectionsLaserDelete
+        end
+      end
+    end
+  end
+  object actlLaser: TActionList
+    left = 472
+    top = 152
+    object actSectionsLaserAdd: TAction
+      Category = 'Sections'
+      Caption = 'Add'
+      DisableIfNoHandler = False
+      OnExecute = actSectionsLaserAddExecute
+      ShortCut = 45
+    end
+    object actSectionsLaserDelete: TAction
+      Category = 'Sections'
+      Caption = 'Delete'
+      DisableIfNoHandler = False
+      OnExecute = actSectionsLaserDeleteExecute
+      ShortCut = 46
+    end
   end
 end

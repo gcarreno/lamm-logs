@@ -12,9 +12,9 @@ uses
 
 type
   TfrmMembers = class(TFrame)
-    DBNavigator1: TDBNavigator;
+    dbnavMembers: TDBNavigator;
     panTitle: TPanel;
-    RxDBGrid1: TRxDBGrid;
+    rxdbgridMembers: TRxDBGrid;
   private
     { private declarations }
   public

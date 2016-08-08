@@ -16,7 +16,7 @@ object frmMembers: TfrmMembers
     Caption = 'Members'
     TabOrder = 0
   end
-  object DBNavigator1: TDBNavigator
+  object dbnavMembers: TDBNavigator
     Left = 0
     Height = 25
     Top = 50
@@ -29,13 +29,13 @@ object frmMembers: TfrmMembers
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 100
-    ClientHeight = 21
-    ClientWidth = 493
+    ClientHeight = 25
+    ClientWidth = 497
     DataSource = dmMain.dsMembers
     Options = []
     TabOrder = 1
   end
-  object RxDBGrid1: TRxDBGrid
+  object rxdbgridMembers: TRxDBGrid
     Left = 0
     Height = 235
     Top = 75
