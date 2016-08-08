@@ -19,7 +19,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="LAMM.Logs.Forms.Main"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="84"/>
         <CursorPos X="3" Y="109"/>
@@ -46,7 +45,7 @@
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="LAMM.Logs.Frames.Laser"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="34"/>
+        <TopLine Value="29"/>
         <CursorPos X="5" Y="54"/>
         <UsageCount Value="34"/>
         <Loaded Value="True"/>
@@ -59,7 +58,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="LAMM.Logs.DataModules.Main"/>
-        <TopLine Value="186"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="183"/>
         <CursorPos Y="205"/>
         <UsageCount Value="32"/>
         <Loaded Value="True"/>

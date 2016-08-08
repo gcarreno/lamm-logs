@@ -11,9 +11,7 @@ object dmMain: TdmMain
     Properties.Strings = (
       'codepage=UTF-8'
     )
-    Connected = True
     Port = 0
-    Database = '/home/gcarreno/Programming/lamm-logs/bin/LAMMLogs.db'
     Protocol = 'sqlite-3'
     left = 106
     top = 51
@@ -28,7 +26,6 @@ object dmMain: TdmMain
     Connection = zconnMain
     BeforePost = ztableMembersBeforePost
     OnNewRecord = ztableMembersNewRecord
-    Active = True
     TableName = 'members'
     left = 106
     top = 104
@@ -89,7 +86,6 @@ object dmMain: TdmMain
     Connection = zconnMain
     BeforePost = ztableLaserBeforePost
     OnNewRecord = ztableLaserNewRecord
-    Active = True
     TableName = 'laser'
     MasterFields = 'id'
     LinkedFields = 'member_id'
