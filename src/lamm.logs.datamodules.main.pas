@@ -12,8 +12,10 @@ uses
 type
   TTableList = (tlNone, tlMembers, tlLaser);
   TdmMain = class(TDataModule)
+    dsMembersCopy: TDataSource;
     dsLaser: TDataSource;
     dsMembers: TDataSource;
+    ztableMembersCopy: TZTable;
     ztableLasername: TStringField;
     zconnMain: TZConnection;
     zqueryMain: TZQuery;
@@ -24,6 +26,11 @@ type
     ztableLaserusage: TTimeField;
     ztableMembers: TZTable;
     ztableLaser: TZTable;
+    ztableMembersCopycreated: TDateTimeField;
+    ztableMembersCopyid: TLargeintField;
+    ztableMembersCopymodified: TDateTimeField;
+    ztableMembersCopyname: TStringField;
+    ztableMembersCopyphysical_id: TStringField;
     ztableMemberscreated: TDateTimeField;
     ztableMembersid: TLargeintField;
     ztableMembersmodified: TDateTimeField;
@@ -201,6 +208,7 @@ begin
     end;
     try
       ztableMembers.Active := True;
+      ztableMembersCopy.Active := True;
       ztableLaser.Active := True;
     except
       on E:Exception do

@@ -130,7 +130,7 @@ object frmMembers: TfrmMembers
       item
         Command = rxgcShowQuickFilter
         ShortCut = 16465
-        Enabled = True
+        Enabled = False
       end    
       item
         Command = rxgcHideQuickFilter

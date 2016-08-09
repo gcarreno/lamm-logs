@@ -2,16 +2,16 @@ object frmLaser: TfrmLaser
   Left = 0
   Height = 395
   Top = 0
-  Width = 630
+  Width = 696
   Align = alClient
   ClientHeight = 395
-  ClientWidth = 630
+  ClientWidth = 696
   TabOrder = 0
   object panTitle: TPanel
     Left = 0
     Height = 50
     Top = 0
-    Width = 630
+    Width = 696
     Align = alTop
     Caption = 'Laser'
     TabOrder = 0
@@ -20,43 +20,123 @@ object frmLaser: TfrmLaser
     Left = 0
     Height = 345
     Top = 50
-    Width = 630
+    Width = 696
     Align = alClient
-    Position = 150
+    Position = 200
     object pssMembers: TPairSplitterSide
       Cursor = crArrow
       Left = 0
       Height = 345
       Top = 0
-      Width = 150
-      ClientWidth = 150
+      Width = 200
+      ClientWidth = 200
       ClientHeight = 345
-      object lbMembers: TListBox
+      object rxdbgridMembersCopy: TRxDBGrid
         Left = 0
         Height = 345
         Top = 0
-        Width = 150
+        Width = 200
+        ColumnDefValues.BlobText = '(blob)'
+        TitleButtons = False
+        AutoSort = True
+        Columns = <        
+          item
+            Title.Alignment = taCenter
+            Title.Orientation = toHorizontal
+            Title.Caption = 'Name'
+            Width = 150
+            FieldName = 'name'
+            EditButtons = <>
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            Footers = <>
+          end>
+        KeyStrokes = <        
+          item
+            Command = rxgcShowFindDlg
+            ShortCut = 16454
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowColumnsDlg
+            ShortCut = 16471
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowFilterDlg
+            ShortCut = 16468
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowSortDlg
+            ShortCut = 16467
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowQuickFilter
+            ShortCut = 16465
+            Enabled = False
+          end        
+          item
+            Command = rxgcHideQuickFilter
+            ShortCut = 16456
+            Enabled = True
+          end        
+          item
+            Command = rxgcSelectAll
+            ShortCut = 16449
+            Enabled = True
+          end        
+          item
+            Command = rxgcDeSelectAll
+            ShortCut = 16429
+            Enabled = True
+          end        
+          item
+            Command = rxgcInvertSelection
+            ShortCut = 16426
+            Enabled = True
+          end        
+          item
+            Command = rxgcOptimizeColumnsWidth
+            ShortCut = 16427
+            Enabled = True
+          end        
+          item
+            Command = rxgcCopyCellValue
+            ShortCut = 16451
+            Enabled = True
+          end>
+        FooterOptions.DrawFullLine = False
+        OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
         Align = alClient
-        ItemHeight = 0
-        OnSelectionChange = lbMembersSelectionChange
-        ScrollWidth = 148
+        Color = clWindow
+        DrawFullLine = False
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        DataSource = dmMain.dsMembersCopy
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        ReadOnly = True
         TabOrder = 0
-        TopIndex = -1
       end
     end
     object pssLaser: TPairSplitterSide
       Cursor = crArrow
-      Left = 155
+      Left = 205
       Height = 345
       Top = 0
-      Width = 475
-      ClientWidth = 475
+      Width = 491
+      ClientWidth = 491
       ClientHeight = 345
       object rxdbgridLaser: TRxDBGrid
         Left = 0
         Height = 319
         Top = 0
-        Width = 475
+        Width = 491
         ColumnDefValues.BlobText = '(blob)'
         TitleButtons = False
         AutoSort = True
@@ -101,7 +181,7 @@ object frmLaser: TfrmLaser
             Title.Orientation = toHorizontal
             Title.Hint = 'When|Date of usage'
             Title.Caption = 'When'
-            Width = 100
+            Width = 150
             FieldName = 'created'
             EditButtons = <>
             Filter.DropDownRows = 0
@@ -134,7 +214,7 @@ object frmLaser: TfrmLaser
           item
             Command = rxgcShowQuickFilter
             ShortCut = 16465
-            Enabled = True
+            Enabled = False
           end        
           item
             Command = rxgcHideQuickFilter
@@ -184,7 +264,7 @@ object frmLaser: TfrmLaser
         Left = 0
         Height = 26
         Top = 319
-        Width = 475
+        Width = 491
         Align = alBottom
         Caption = 'tbarLaser'
         TabOrder = 1

@@ -15,11 +15,11 @@ type
     actSectionsLaserDelete: TAction;
     actSectionsLaserAdd: TAction;
     actlLaser: TActionList;
-    lbMembers: TListBox;
     psLaser: TPairSplitter;
     pssMembers: TPairSplitterSide;
     pssLaser: TPairSplitterSide;
     panTitle: TPanel;
+    rxdbgridMembersCopy: TRxDBGrid;
     rxdbgridLaser: TRxDBGrid;
     tbarLaser: TToolBar;
     tbtnAdd: TToolButton;

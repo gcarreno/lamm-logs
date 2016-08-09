@@ -12,6 +12,7 @@ object dmMain: TdmMain
       'codepage=UTF-8'
     )
     Port = 0
+    Database = '/home/gcarreno/Programming/lamm-logs/bin/LAMMLogs.db'
     Protocol = 'sqlite-3'
     left = 106
     top = 51
@@ -88,9 +89,10 @@ object dmMain: TdmMain
     OnNewRecord = ztableLaserNewRecord
     TableName = 'laser'
     MasterFields = 'id'
+    MasterSource = dsMembersCopy
     LinkedFields = 'member_id'
-    left = 106
-    top = 152
+    left = 336
+    top = 160
     object ztableLaserid: TLargeintField
       DisplayLabel = 'ID'
       FieldKind = fkData
@@ -135,6 +137,7 @@ object dmMain: TdmMain
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = True
+      DisplayFormat = 'hh"h" nn"m" ss"s"'
     end
     object ztableLasercreated: TDateTimeField
       DisplayLabel = 'Created'
@@ -164,7 +167,70 @@ object dmMain: TdmMain
   end
   object dsLaser: TDataSource
     DataSet = ztableLaser
-    left = 216
-    top = 152
+    left = 472
+    top = 160
+  end
+  object ztableMembersCopy: TZTable
+    Connection = zconnMain
+    TableName = 'members'
+    left = 336
+    top = 104
+    object ztableMembersCopyid: TLargeintField
+      DisplayLabel = 'ID'
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ztableMembersCopyname: TStringField
+      DisplayLabel = 'Name'
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 400
+    end
+    object ztableMembersCopyphysical_id: TStringField
+      DisplayLabel = 'Physical ID'
+      FieldKind = fkData
+      FieldName = 'physical_id'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+    object ztableMembersCopycreated: TDateTimeField
+      DisplayLabel = 'Created'
+      FieldKind = fkData
+      FieldName = 'created'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ztableMembersCopymodified: TDateTimeField
+      DisplayLabel = 'Modified'
+      FieldKind = fkData
+      FieldName = 'modified'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object dsMembersCopy: TDataSource
+    DataSet = ztableMembersCopy
+    left = 472
+    top = 104
   end
 end
