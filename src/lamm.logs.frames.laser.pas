@@ -35,6 +35,9 @@ type
 
 implementation
 
+uses
+  dateutils;
+
 {$R *.lfm}
 
 { TfrmLaser }
@@ -45,7 +48,7 @@ var
 begin
   if InputQuery('Usage', 'Add usage', sUsage) then
   begin
-
+    //ShowMessage('Time: '+TimeToStr(ScanDateTime('s',sUsage)));
   end;
 end;
 
